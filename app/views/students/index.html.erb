@@ -1,0 +1,11 @@
+<h2>Students</h2>
+<hr>
+<% @students.each do |e| %>
+  <div>
+    <details>
+      <summary style="list-style-type: none;"><p><%= e[:name] %></p></summary>
+       <p><%= e[:age] %></p>
+       <p><%= e[:course] %></p>
+    </details>
+  </div>
+<% end %>
