@@ -1,12 +1,22 @@
-<h2>Students</h2>
-<div><%= link_to 'home', root_path %><div>
-<hr>
-<% @students.each do |e| %>
-  <div>
-    <details>
-      <summary style="list-style-type: none;"><p><%= e[:name] %></p></summary>
-       <p><%= e[:age] %></p>
-       <p><%= e[:course] %></p>
-    </details>
-  </div>
-<% end %>
+<div class="container">
+  <h2>Students</h2>
+  <div><%= link_to 'home', root_path %></div>
+  <hr>
+  <% @students.each do |e| %>
+    <div class="accordion" id="accordionExample">
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingOne">
+          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse<%= e[:name].parameterize %>" aria-expanded="true" aria-controls="collapseOne">
+            <%= e[:name] %>
+          </button>
+        </h2>
+        <div id="collapse<%= e[:name].parameterize %>" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+            <p><%= e[:age] %></p>
+            <p><%= e[:course] %></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
